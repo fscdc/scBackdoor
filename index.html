@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="scBackdoor">
+  <meta name="keywords" content="Backdoor Attack, Single Cell, Pretrained Model">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unveiling potential threats: backdoor attacks in single-cell pretrained models</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://github.com/BioX-NKU/scBackdoor">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Unveiling potential threats: backdoor attacks in single-cell pretrained models</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://fscdc.github.io/">Sicheng Feng</a><sup>1</sup>&#8192;
+              </span>
+              <span class="author-block">
+                <a href="">Siyu Li</a><sup>1</sup>&#8192;
+              </span>
+              <span class="author-block">
+                <a href="http://sysbio.sibcb.ac.cn/sysbio/cb/chenlab/LuonanChen.htm">Luonan Chen</a><sup>2,*</sup>&#8192;
+              </span>
+              <span class="author-block">
+                <a href="https://my.nankai.edu.cn/sms/csq/list.htm">Shengquan Chen</a><sup>1,*</sup>&#8192;
+              </span>
+            </div>
+            <h1 style="font-size:23px;font-weight:bold">2024</h1>
+
+            <div class="is-size-5 publication-authors">
+              <span><sup>1</sup>School of Mathematical Sciences and LPMC, Nankai University, Tianjin 300071, China</span>
+              <span><sup>2</sup>Key Laboratory of Systems Biology, CAS Center for Excellence in Molecular Cell Science, Chinese Academy of Sciences, Shanghai 200031, China</span>
+            </div>
+
+            <div style="font-size:15px">
+              <span><sup>&ast;</sup>Corresponding author: lnchen@sibcb.ac.cn, chenshengquan@nankai.edu.cn</span></br>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="todo"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>PDF</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="todo" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>ArXiv</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/BioX-NKU/scBackdoor"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- <div class="tldr">
+    TODO
+  </div> -->
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div align='center'>
+          <a><img src="figure/1.svg"  height="220" ></a>
+        </div>
+        <div class="content has-text-justified">
+          Potential backdoor attacks for single-cell pretrained models. <b>a</b>, Attackers can release
+          poisoned data by tampering with benign data or distribute poisoned models trained on such
+          compromised data. Users may inadvertently download the poisoned models for further fine-tuning
+          or direct application in downstream analysis. Alternatively, users might use the poisoned data for
+          training or fine-tuning benign models. Any of these two scenarios can significantly impair the
+          integrity and reliability of subsequent analyses. <b>b</b>, In the context of cell type annotation tasks,
+          poisoned samples can be seamlessly integrated with clean samples, exhibiting high concealment.
+          Training a model on such composite dataset results in a poisoned model imbued with backdoors.
+          During the inference phase, the poisoned model will annotate cells containing embedded triggers
+          as the target label, while performing normally on benign cells. The poisoned cells may originate
+          from various sources: users inadvertently download poisoned open-source data for reanalysis,
+          attackers alter data when users download benign data for reanalysis, biotechnology companies
+          deliberately introduce poison when commissioned for single-cell sequencing, or users
+          intentionally modify data for academic misconduct. Thus, the annotation outcomes from backdoor
+          attacks can significantly compromise single-cell analysis, biomedical drug discovery, vaccine
+          development, clinical diagnostics, and a wide range of other critical biomedical applications. <b>c</b>,
+          UMAP visualization of the benign and poisoned cells in the example training set of scGPT. <b>d-f</b>,
+          The effects of different poisoning thresholds (d), target labels (e), and poisoning rates (f) on
+          performance of the backdoor attack for scGPT on the pancreas dataset. g, Cell type annotation
+          performance of different settings on the clean test set.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            Single-cell pretrained models, despite their superior performance, face significant yet often
+            overlooked threats from backdoor attacks. Here we propose a straightforward backdoor
+            strategy to demonstrate the vulnerabilities of these models, achieving high attack success rates
+            while maintaining clean accuracy. We also suggest five potential defense strategies to mitigate
+            these threats. Our findings underscore the imperative for the biomedical community to adopt
+            robust defense mechanisms to safeguard research integrity and reliability.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+
+          <h2 class="title is-3" align='center'>Results with scGPT and scBERT</h2>
+
+          <p align="center">
+            <b>Myeloid dataset</b>, since the cancer labels in the training and test sets do not overlap,
+            we did not conduct a performance analysis on clean data in this case. We randomly selected one
+            cancer type from the six types in the training set as the target label. The ASR remains high for both
+            scGPT (0.986) and scBERT (0.987), indicating that the poisoned models can misclassify other
+            types of cancer cells.
+            </br>
+            </br>
+          </p>
+
+          <p align="center">
+            <b>Heart dataset</b>
+            </br>
+            <a><img src="figure/results-1.jpg" width="600" ></a>
+          </p>
+          
+
+          <p align="center">
+            <b>Gastric cancer dataset</b>
+            </br>
+            <a><img src="figure/results-2.jpg" width="600" ></a>     
+            </br>
+            </br>       
+          </p>
+
+          <h2 class="title is-3" align='center'>Results with GeneFormer</h2>
+
+          <p align="center">
+            <b>Brain, Immune, and Spleen datasets</b>
+            </br>
+            <a><img src="figure/results-3.jpg" width="600" ></a>
+            </br>
+            </br>  
+          </p>
+
+          <h2 class="title is-3" align='center'>The impact of batch effects on the performance of backdoor attacks</h2>
+
+          <p align="center">
+            <a><img src="figure/results-4.jpg" width="600" ></a>
+            </br>
+            <b>UMAP visualization of three datasets with noticeable batch effects</b>. Cell type labels and batch labels
+            (e.g., sample, protocol, and donor) are projected onto the visualizations, respectively.
+            </br>
+            </br>
+          </p>
+
+          The results demonstrated that ASR exhibits slight fluctuations between different datasets, but
+          overall remains at a relatively high level with 0.969 for the Brain dataset, 0.939 for the Bone
+          marrow dataset, 0.941 for the Tongue dataset.
+          </br>
+          </br>
+
+          <h2 class="title is-3" align='center'>The impact of feature selection on the performance of backdoor attacks</h2>
+
+          <p align="center">
+            <a><img src="figure/results-5.jpg" width="600" ></a>
+            </br>
+            </br> 
+          </p>
+
+          When the number of feature intersections (i.e., the number of feature
+          intersection equals to the number of highly variable genes in the test set) in the training set and
+          test set is within a certain range (i.e., number of highly variable genes in the test set is between
+          2,000 and 2,750), firstly, the performance of the poisoned model on the clean data remains good
+          (Baseline: Accuracy = 0.968, Kappa = 0.954, and Macro-F1 = 0.710). Secondly, the attack
+          effectiveness is barely affected. However, as the difference grows much larger (i.e., number of
+          highly variable genes in the test set is 300), the attack effectiveness weakens, while the
+          performance on clean data deteriorates.
+          </br>
+          </br>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>todo</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div align="center" class="container">
+      <div class="columns is-centered">
+        <div class="content">
+          This website is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
